@@ -1,0 +1,33 @@
+import { Grid } from "@mui/material"
+import { arrayOf, number, shape, string } from "prop-types"
+
+const ProductGrid = ({ productList }) => {
+    return (
+        <Grid container spacing={2}>
+            {
+                productList.map(product => (
+                    <Grid item xs={12} sm={6} md={4} lg={3} key={product.id}>
+                    </Grid>
+                ))
+            }
+        </Grid>
+    )
+}
+
+ProductGrid.propTypes = {
+    productList: arrayOf(
+        shape({
+            id: string.isRequired,
+            brand: string.isRequired,
+            model: string.isRequired,
+            price: number.isRequired,
+            imgUrl: string.isRequired,
+        })
+    )
+};
+
+ProductGrid.defaultProps = {
+    productList: []
+};
+
+export default ProductGrid;

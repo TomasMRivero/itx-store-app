@@ -2,10 +2,15 @@ import { Grid } from "@mui/material"
 import { arrayOf, number, shape, string } from "prop-types"
 import ProductCard from "./ProductCard";
 
-const ProductGrid = ({ productList }) => {
+const ProductGrid = ({ productList, isLoading = true }) => {
     return (
         <Grid container spacing={2}>
-            {
+            { isLoading ? 
+                Array.from({ length: 8 }).map((_, index) => (
+                    <Grid size={{xs: 12, sm: 6, md: 4, lg: 3}} key={index}>
+                        <ProductCard isLoading={isLoading} />
+                    </Grid>
+                )) : 
                 productList.map(product => (
                     <Grid size={{xs: 12, sm: 6, md: 4, lg: 3}} key={product.id}>
                         <ProductCard product={product} />

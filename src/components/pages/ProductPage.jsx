@@ -9,7 +9,7 @@ const ProductPage = ({}) => {
             <Typography variant="h4" mb={3}>
                 Productos
             </Typography>
-            {!isLoading && isSuccess && <ProductGrid productList={productList}/>}
+            {!isError && <ProductGrid productList={productList} isLoading={isLoading}/>}
         </Box>
     )
 }

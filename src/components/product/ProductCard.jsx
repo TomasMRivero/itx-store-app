@@ -1,7 +1,10 @@
-import { Box, Card, CardContent, CardMedia, Typography } from "@mui/material";
-import { shape, string } from "prop-types";
+import { Box, Card, CardContent, CardMedia, Skeleton, Typography } from "@mui/material";
+import { bool, shape, string } from "prop-types";
 
-const ProductCard = ({ product, }) => {
+const ProductCard = ({ 
+    product,
+    isLoading = false
+}) => {
     return(
         <Card 
             sx={{
@@ -10,17 +13,33 @@ const ProductCard = ({ product, }) => {
                 borderRadius: 3,
             }}
         >
-            <CardMedia
-                component="img"
-                image={product.imgUrl}
-                alt={`${product.brand}: ${product.model}`}
-                sx={{
-                    width: "100%", 
-                    objectFit: "contain",
-                    display: "flex",
-                    flexDirection: "column",
-                }}
-            />
+            {isLoading ? (
+                <Skeleton 
+                    height={210}
+                    width={228}
+                    animation="wave"
+                    variant="rectangular"
+                    sx={{
+                        objectFit: "contain",
+                        display: "flex",
+                        flexDirection: "column",
+                        mx: "auto"
+                    }}
+                />
+            ) : (
+                <CardMedia
+                    height={210}
+                    width="100%"
+                    component="img"
+                    image={product.imgUrl}
+                    alt={`${product.brand}: ${product.model}`}
+                    sx={{
+                        objectFit: "contain",
+                        display: "flex",
+                        flexDirection: "column",
+                    }}
+                />
+            ) }
             <CardContent sx={{ flexGrow: 1, display: "flex", flexDirection: "column", justifyContent: "space-between", padding: 2, "&:last-child": { paddingBottom: 0 } }}>
                 <Box
                     display="flex"
@@ -34,13 +53,14 @@ const ProductCard = ({ product, }) => {
                             variant="subtitle1"
                             fontWeight="bold"
                         >
-                            {product.brand}
+                            {isLoading ? <Skeleton /> : product.brand}
                         </Typography>
                         <Typography
                             align="left"
                             variant="subtitle2"
+                            noWrap
                         >
-                            {product.model}
+                            {isLoading ? <Skeleton /> : product.model}
                         </Typography>
                     </Box>
                     <Typography
@@ -49,7 +69,7 @@ const ProductCard = ({ product, }) => {
                         sx={{ marginTop: 1 /* o gap entre bloques */ }}
                         align="right"
                     >
-                        {product.price ? `${product.price}€` : "-"}
+                        {isLoading ? <Skeleton /> : (product.price ? `${product.price}€` : "-")}
                     </Typography>
                 </Box>
             </CardContent>
@@ -64,12 +84,8 @@ ProductCard.propTypes = {
         model: string.isRequired,
         price: string,
         imgUrl: string.isRequired,
-    }).isRequired,
+    }),
+    isLoading: bool
 };
-ProductCard.defaultProps = {
-    product: {
-        price: null, //Tenemos casos de productos sin precio
-    }
-}
 
 export default ProductCard;

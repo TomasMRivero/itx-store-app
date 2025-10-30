@@ -2,7 +2,7 @@ import { Grid } from "@mui/material"
 import { arrayOf, number, shape, string } from "prop-types"
 import ProductCard from "./ProductCard";
 
-const ProductGrid = ({ productList, isLoading = true }) => {
+const ProductGrid = ({ productList = [], isLoading = true }) => {
     return (
         <Grid container spacing={2}>
             { isLoading ? 

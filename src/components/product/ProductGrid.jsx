@@ -1,5 +1,6 @@
 import { Grid } from "@mui/material"
 import { arrayOf, number, shape, string } from "prop-types"
+import ProductCard from "./ProductCard";
 
 const ProductGrid = ({ productList }) => {
     return (
@@ -7,7 +8,7 @@ const ProductGrid = ({ productList }) => {
             {
                 productList.map(product => (
                     <Grid size={{xs: 12, sm: 6, md: 4, lg: 3}} key={product.id}>
-                        {product.brand} {product.model}
+                        <ProductCard product={product} />
                     </Grid>
                 ))
             }
@@ -24,7 +25,7 @@ ProductGrid.propTypes = {
             price: number.isRequired,
             imgUrl: string.isRequired,
         })
-    )
+    ),
 };
 
 ProductGrid.defaultProps = {

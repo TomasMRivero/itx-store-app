@@ -1,9 +1,10 @@
 import { fetchBaseQuery } from "@reduxjs/toolkit/query";
 
-const EXPIRES_AFTER = 6000;
+const EXPIRES_AFTER = (Number(import.meta.env.VITE_CACHE_EXPIRES_AFTER_SECONDS) || 3600) * 1000;
+const BASE_URL = import.meta.env.VITE_ITX_BASE_URL;
 
 export const cacheBaseQuery = 
-    baseUrl => async({ url, method = 'GET', body, params}, api, extraOptions) => {
+    (baseUrl = BASE_URL) => async({ url, method = 'GET', body, params}, api, extraOptions) => {
         const baseQuery = fetchBaseQuery({ baseUrl });
         const key = `${method}_${url}`;
 

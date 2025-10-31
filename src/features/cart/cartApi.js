@@ -5,6 +5,7 @@ import { cartBaseQuery } from "../../utils/cartBaseQuery";
 export const cartApi = createApi({
     reducerPath: 'cart',
     baseQuery: cartBaseQuery(),
+    tagTypes: ["Cart"],
     endpoints: builder => ({
         addToCart: builder.mutation({
             query: (item) => ({
@@ -12,12 +13,14 @@ export const cartApi = createApi({
                 method: 'POST',
                 body: item,
             }),
+            invalidatesTags: ["Cart"],
         }),
         getCart: builder.query({
             queryFn: () => {
                 const cached = localStorage.getItem('cartApiCache_counter');
-                return cached ? {data: JSON.parse(cached)} : null
+                return cached ? {data: JSON.parse(cached)} : { data: null }
             },
+            providesTags: ["Cart"],
         }),
     }),
 });

@@ -1,9 +1,9 @@
 import { Form, Formik } from 'formik';
 import labels from '../../i18n/es.json';
 import { Box } from '@mui/system';
-import { Button, FormControl, FormHelperText, InputLabel, MenuItem, Select, Typography } from '@mui/material';
+import { Button, CircularProgress, FormHelperText, Typography } from '@mui/material';
 
-const ProductActions = ({ options, onAddToCart }) => {
+const ProductActions = ({ options, onAddToCart, cartLoading }) => {
     const initialValues = Object.fromEntries(Object.keys(options).map(key => {
         const initial = options[key].length === 1 ? options[key][0].code : '';
         return [key, initial]
@@ -63,8 +63,8 @@ const ProductActions = ({ options, onAddToCart }) => {
                                 )}
                             </>
                         ))}
-                        <Button type="submit" variant="contained" color="secondary">
-                            {labels.product.actions.addToCart}
+                        <Button type="submit" variant="contained" color="secondary" disabled={cartLoading} startIcon={cartLoading ? <CircularProgress size={20} color="inherit" /> : null}>
+                            {cartLoading ? '' : labels.product.actions.addToCart}
                         </Button>
                     </Box>
 

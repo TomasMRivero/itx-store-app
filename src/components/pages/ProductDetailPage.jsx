@@ -44,7 +44,7 @@ const ProductDetailPage = () => {
                         <ProductDetail product={product} />
                     </Box>
                     <Box sx={{ width: '100%', boxSizing: 'border-box'}}>
-                        <ProductActions options={product.options} onAddToCart={ handleAddToCart } />
+                        <ProductActions options={product.options} onAddToCart={ handleAddToCart } cartLoading={isAddToCartLoading} />
                     </Box>
                 </Grid>
             </Grid>

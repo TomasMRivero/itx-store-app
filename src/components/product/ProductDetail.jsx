@@ -1,7 +1,7 @@
 import { arrayOf, number, string } from "prop-types"
 import labels from '../../i18n/es.json';
 import { Box, Button, Typography } from "@mui/material";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 
 const ProductDetail = ({ product }) => {
     const { id, options, imgUrl, ...attrs } = product

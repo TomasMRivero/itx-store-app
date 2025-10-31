@@ -1,12 +1,16 @@
 {
     "common": {
         "seeMore": "Ver más",
-        "seeLess": "Ver menos"
+        "seeLess": "Ver menos",
+        "orderBy": "Ordenar por...",
+        "asc": "Ascendente",
+        "desc": "Descendente",
+        "search": "Buscar"
     },
     "product": {
         "sections": {
             "catalog": "Catálogo de productos",
-            "description": "Descripción del producto:"
+            "description": "Descripción del producto"
         },
         "attributes": {
             "brand": "Marca",
@@ -50,7 +54,14 @@
             "storages": "Seleccione el almacenamiento"
         },
         "actions": {
-            "addToCart": "Añadir al carrito"
+            "addToCart": "Añadir al carrito",
+            "searchProduct": "Buscar producto"
+        },
+        "filters": {
+            "any": "Cualquiera",
+            "price": "Precio",
+            "brand": "Marca",
+            "model": "Modelo"
         },
         "errors": {
             "options": {

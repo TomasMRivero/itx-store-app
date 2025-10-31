@@ -3,6 +3,7 @@ import { useGetProductListQuery } from "../../features/product/productApi";
 import ProductGrid from "../product/ProductGrid";
 import { useMemo, useState } from "react";
 import ProductFilterBar from "../product/ProductFilterBar";
+import labels from '../../i18n/es.json';
 
 const ProductPage = ({}) => {
     const { data: productList = [], isLoading, isError } = useGetProductListQuery();
@@ -27,7 +28,7 @@ const ProductPage = ({}) => {
     return(
         <Box sx={{ p: 4 }}>
             <Typography variant="h4" mb={3}>
-                Productos
+                {labels.product.sections.catalog}
             </Typography>
             <ProductFilterBar
                 search={search}

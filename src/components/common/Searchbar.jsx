@@ -1,9 +1,10 @@
 import { TextField } from "@mui/material";
+import labels from '../../i18n/es.json';
 
-const SearchBar = ({ search, setSearch }) => {
+const SearchBar = ({ search, setSearch, label = labels.common.search}) => {
   return (
     <TextField
-      label="Buscar producto"
+      label={label}
       variant="outlined"
       size="small"
       fullWidth

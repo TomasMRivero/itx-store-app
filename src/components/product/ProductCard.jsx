@@ -1,10 +1,17 @@
 import { Box, Card, CardActionArea, CardContent, CardMedia, Skeleton, Typography } from "@mui/material";
 import { bool, shape, string } from "prop-types";
+import { useNavigate } from "react-router-dom";
 
 const ProductCard = ({ 
     product,
     isLoading = false
 }) => {
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        navigate(`/products/${product.id}`)
+    }
+
     return(
         <Card 
             sx={{
@@ -12,7 +19,7 @@ const ProductCard = ({
                 borderRadius: 3,
             }}
         >
-            <CardActionArea sx={{padding: 3}}>
+            <CardActionArea sx={{padding: 3}} onClick={handleClick}>
                 
                 {isLoading ? (
                     <Skeleton 

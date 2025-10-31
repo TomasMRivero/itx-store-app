@@ -3,10 +3,18 @@ import labels from '../../i18n/es.json';
 import { Box, Typography } from "@mui/material";
 
 const ProductDetail = ({ product }) => {
-    const {id, options, imgUrl, ...attrs} = product
-    
+    const { id, options, imgUrl, ...attrs } = product
+
     return (
-        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+        <Box sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 1,
+            borderRadius: 2,
+            boxShadow: 3,
+            p: 3,
+            backgroundColor: "background.paper",
+        }}>
             {Object.keys(attrs).map((key) => {
                 const value = attrs[key];
                 const label = labels.product.attributes[key] || key // usa label si existe, si no la key

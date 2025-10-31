@@ -28,32 +28,39 @@ const ProductActions = ({ options, onAddToCart }) => {
         >
             {({ values, errors, handleSubmit, setFieldValue }) => (
                 <Form onSubmit={handleSubmit} >
-                    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, mt: 2 }}>
+                    <Box sx={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        borderRadius: 2,
+                        boxShadow: 3,
+                        p: 3,
+                        backgroundColor: "background.paper",
+                    }}>
                         {Object.keys(options).map((key) => (
                             <>
-                            <Box key={key} p={3} borderRadius={3} sx={errors[key] ? {border: 1, borderColor: "#d32f2f"} : {}} >
+                                <Box key={key} p={3} borderRadius={3} sx={errors[key] ? { border: 1, borderColor: "#d32f2f" } : {}} >
 
-                                <Typography variant="subtitle1" gutterBottom>
-                                    {labels.product.options[key] || key}
-                                </Typography>
+                                    <Typography variant="subtitle1" gutterBottom>
+                                        {labels.product.options[key] || key}:
+                                    </Typography>
 
-                                <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center'}}>
-                                    {options[key].map((option) => (
-                                        <Button
-                                        key={option.code}
-                                        variant={values[key] === option.code ? 'contained' : 'outlined'}
-                                        onClick={() => setFieldValue(key, option.code)}
-                                        >
-                                            {option.name}
-                                        </Button>
-                                    ))}
+                                    <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', boxSizing: 'border-box'}}>
+                                        {options[key].map((option) => (
+                                            <Button
+                                                key={option.code}
+                                                variant={values[key] === option.code ? 'contained' : 'outlined'}
+                                                onClick={() => setFieldValue(key, option.code)}
+                                            >
+                                                {option.name}
+                                            </Button>
+                                        ))}
+                                    </Box>
                                 </Box>
-                            </Box>
-                            {errors[key] && (
-                                <FormHelperText error sx={{ ml:2, mt: -1 }}>
-                                    {errors[key]}
-                                </FormHelperText>
-                            )}
+                                {errors[key] && (
+                                    <FormHelperText error sx={{ ml: 2, mt: 0 }}>
+                                        {errors[key]}
+                                    </FormHelperText>
+                                )}
                             </>
                         ))}
                         <Button type="submit" variant="contained" color="secondary">

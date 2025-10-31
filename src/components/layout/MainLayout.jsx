@@ -6,9 +6,9 @@ const MainLayout = ({
     children
 }) => {
     return (
-        <Box display="flex" flexDirection="column" minHeight="100vh">
+        <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
             <Header />
-            <Container sx={{ flex:1, py: 4}}>
+            <Container sx={{ mt: 4, flexGrow: 1 }} maxWidth="xl">
                 <Outlet />
             </Container>
         </Box>

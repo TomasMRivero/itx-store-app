@@ -62,8 +62,8 @@ const sortProducts = (productList, criteria, sortOrder) =>
     if (!valIzq) return 1;
     if (!valDer) return -1;
 
-    if (valIzq < valDer) return sortOrder === "asc" ? -1 : 1;
-    if (valIzq > valDer) return sortOrder === "asc" ? 1 : -1;
+    if (valIzq < valDer) return sortOrder === "asc" ? 1 : -1;
+    if (valIzq > valDer) return sortOrder === "asc" ? -1 : 1;
     return 0;
 });
 

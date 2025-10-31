@@ -39,6 +39,19 @@
             "sensors": "Sensores",
             "battery": "Batería",
             "colors": "Colores disponibles"
+        },
+        "options": {
+            "colors": "Seleccione un color",
+            "storages": "Seleccione el almacenamiento"
+        },
+        "actions": {
+            "addToCart": "Añadir al carrito"
+        },
+        "errors": {
+            "options": {
+                "notValid": "Opción no válida",
+                "notSelected": "Debe seleccionar una opción"
+            }
         }
     }
 }

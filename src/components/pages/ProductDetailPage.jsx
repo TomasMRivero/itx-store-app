@@ -5,11 +5,27 @@ import { useParams } from "react-router-dom";
 import ProductDetail from "../product/ProductDetail";
 import ProductActions from "../product/ProductActions";
 import ProductImage from "../product/ProductImage";
+import { useAddToCartMutation } from "../../features/cart/cartApi";
 
 const ProductDetailPage = () => {
     const { id } = useParams();
-    const { data: product, isLoading, isError } = useGetProductByIdQuery(id);
-    if (isLoading) return <>Cargando</>
+    const { data: product, isLoading: isProductFetching, isError } = useGetProductByIdQuery(id);
+    const [ addToCart, {isLoading: isAddToCartLoading} ] = useAddToCartMutation();
+
+    const handleAddToCart = async (values) => {
+        const { colors: colorCode, storages: storageCode } = values;
+        try{
+            await addToCart({
+                id,
+                colorCode,
+                storageCode,
+            }).unwrap()
+        } catch ( err ) {
+            console.log(err)
+        }
+    }
+
+    if (isProductFetching) return <>Cargando</>
     return (
         <Box sx={{ width: '100%', boxSizing: 'border-box', p:4}}>
             <Grid 
@@ -20,7 +36,7 @@ const ProductDetailPage = () => {
                     boxSizing: 'border-box'
                 }}>
                 <Grid size={{ xs: 12, md: 7 }}>
-                    <ProductImage {...product} isLoading={isLoading} />
+                    <ProductImage {...product} isLoading={isProductFetching} />
                 </Grid>
 
                 <Grid size={{ xs: 12, md: 5 }}>
@@ -28,7 +44,7 @@ const ProductDetailPage = () => {
                         <ProductDetail product={product} />
                     </Box>
                     <Box sx={{ width: '100%', boxSizing: 'border-box'}}>
-                        <ProductActions options={product.options} onAddToCart={(values) => { console.log(values) }} />
+                        <ProductActions options={product.options} onAddToCart={ handleAddToCart } />
                     </Box>
                 </Grid>
             </Grid>

@@ -8,18 +8,19 @@ export const cartBaseQuery =
         const key = `cartApiCache_counter`;
 
         try {
-            const result = await baseQuery({ url, method, body, params }, api, extraOptions);
+            const result = await baseQuery({ url, method, body }, api, extraOptions);
 
             if(result.data){
                 localStorage.setItem(key, JSON.stringify(result.data))
-            } else {
-                const cached = localStorage.getItem(key);
-                if(cached) return {data: JSON.parse(cached)};
             }
             
             return result;
         } catch (err) {
-            return { err };
+            
+            const cached = localStorage.getItem(key);
+            if(cached) return {data: JSON.parse(cached)};
+
+            return { error: err };
         }
 
     }

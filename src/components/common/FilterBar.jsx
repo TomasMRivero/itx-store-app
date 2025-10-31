@@ -4,13 +4,13 @@ import { Accordion, AccordionDetails, AccordionSummary, Box, Grid, Typography, u
 const FilterBar = ({ children }) => {
     const theme = useTheme();
     const isExpandible = useMediaQuery(theme.breakpoints.down("sm"))
-    
-    const gridBox = 
+
+    const gridBox =
         <Grid container spacing={2} alignItems="flex-end" justifyContent="space-evenly">
             {children}
         </Grid>
 
-    return(
+    return (
         <Box width="100%" mb={2}>
             {isExpandible ? (
                 <Accordion>

@@ -44,7 +44,7 @@ const ProductActions = ({ options, onAddToCart, cartLoading }) => {
                                         {labels.product.options[key] || key}:
                                     </Typography>
 
-                                    <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', boxSizing: 'border-box'}}>
+                                    <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', boxSizing: 'border-box' }}>
                                         {options[key].map((option) => (
                                             <Button
                                                 key={option.code}

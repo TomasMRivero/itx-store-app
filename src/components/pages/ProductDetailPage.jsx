@@ -10,25 +10,25 @@ import { useAddToCartMutation } from "../../features/cart/cartApi";
 const ProductDetailPage = () => {
     const { id } = useParams();
     const { data: product, isLoading: isProductFetching, isError } = useGetProductByIdQuery(id);
-    const [ addToCart, {isLoading: isAddToCartLoading} ] = useAddToCartMutation();
+    const [addToCart, { isLoading: isAddToCartLoading }] = useAddToCartMutation();
 
     const handleAddToCart = async (values) => {
         const { colors: colorCode, storages: storageCode } = values;
-        try{
+        try {
             await addToCart({
                 id,
                 colorCode,
                 storageCode,
             }).unwrap()
-        } catch ( err ) {
+        } catch (err) {
             console.log(err)
         }
     }
 
     if (isProductFetching) return <>Cargando</>
     return (
-        <Box sx={{ width: '100%', boxSizing: 'border-box', p:4}}>
-            <Grid 
+        <Box sx={{ width: '100%', boxSizing: 'border-box', p: 4 }}>
+            <Grid
                 container spacing={2}
                 alignItems="flex-start"
                 sx={{
@@ -40,11 +40,11 @@ const ProductDetailPage = () => {
                 </Grid>
 
                 <Grid size={{ xs: 12, md: 5 }}>
-                    <Box sx={{ width: '100%', boxSizing: 'border-box', mb:3}}>
+                    <Box sx={{ width: '100%', boxSizing: 'border-box', mb: 3 }}>
                         <ProductDetail product={product} />
                     </Box>
-                    <Box sx={{ width: '100%', boxSizing: 'border-box'}}>
-                        <ProductActions options={product.options} onAddToCart={ handleAddToCart } cartLoading={isAddToCartLoading} />
+                    <Box sx={{ width: '100%', boxSizing: 'border-box' }}>
+                        <ProductActions options={product.options} onAddToCart={handleAddToCart} cartLoading={isAddToCartLoading} />
                     </Box>
                 </Grid>
             </Grid>

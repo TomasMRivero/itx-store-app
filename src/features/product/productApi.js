@@ -6,10 +6,10 @@ export const productApi = createApi({
     baseQuery: cacheBaseQuery(),
     endpoints: builder => ({
         getProductList: builder.query({
-            query: () => ({ url: '/product'}),
+            query: () => ({ url: '/product' }),
         }),
         getProductById: builder.query({
-            query: (id) => ({ url: `/product/${id}`}),
+            query: (id) => ({ url: `/product/${id}` }),
         }),
     }),
 });

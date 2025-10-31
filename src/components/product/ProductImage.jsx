@@ -13,7 +13,7 @@ const ProductImage = ({ imgUrl = null, brand = null, model = null, isLoading = t
                 justifyContent: 'center',
                 boxSizing: 'border-box',
                 p: 0,
-                
+
             }}
         >
             {isLoading ? (

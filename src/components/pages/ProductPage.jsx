@@ -5,17 +5,17 @@ import { useMemo, useState } from "react";
 import ProductFilterBar from "../product/ProductFilterBar";
 import labels from '../../i18n/es.json';
 
-const ProductPage = ({}) => {
+const ProductPage = ({ }) => {
     const { data: productList = [], isLoading, isError } = useGetProductListQuery();
-    
+
     const [search, setSearch] = useState("");
     const [sortBy, setSortBy] = useState("");
     const [sortOrder, setSortOrder] = useState("asc");
 
-    const filteredProducts = useMemo(()=>{
+    const filteredProducts = useMemo(() => {
         let result = [...productList];
-        
-        if(search) {
+
+        if (search) {
             result = searchProducts(result, search)
         }
 
@@ -25,7 +25,7 @@ const ProductPage = ({}) => {
 
         return result
     }, [search, productList, sortBy, sortOrder]);
-    return(
+    return (
         <Box sx={{ p: 4 }}>
             <Typography variant="h4" mb={3}>
                 {labels.product.sections.catalog}
@@ -38,7 +38,7 @@ const ProductPage = ({}) => {
                 setSortBy={setSortBy}
                 setSortOrder={setSortOrder}
             />
-            {!isError && <ProductGrid productList={filteredProducts} isLoading={isLoading}/>}
+            {!isError && <ProductGrid productList={filteredProducts} isLoading={isLoading} />}
         </Box>
     )
 }
@@ -46,26 +46,26 @@ const ProductPage = ({}) => {
 const searchProducts = (productList, criteria) => {
     const lowercaseCriteria = criteria.toLowerCase();
     return [...productList].filter(
-            product => 
-                product.brand.toLowerCase().includes(lowercaseCriteria) ||
-                product.model.toLowerCase().includes(lowercaseCriteria)
-            );
+        product =>
+            product.brand.toLowerCase().includes(lowercaseCriteria) ||
+            product.model.toLowerCase().includes(lowercaseCriteria)
+    );
 }
 
-const sortProducts = (productList, criteria, sortOrder) => 
+const sortProducts = (productList, criteria, sortOrder) =>
     [...productList].sort((izq, der) => {
-    let valIzq = izq[criteria];
-    let valDer = der[criteria];
+        let valIzq = izq[criteria];
+        let valDer = der[criteria];
 
-    if(typeof valIzq === "string") valIzq = valIzq.toLowerCase()
-    if(typeof valDer === "string") valDer = valDer.toLowerCase()
+        if (typeof valIzq === "string") valIzq = valIzq.toLowerCase()
+        if (typeof valDer === "string") valDer = valDer.toLowerCase()
 
-    if (!valIzq) return 1;
-    if (!valDer) return -1;
+        if (!valIzq) return 1;
+        if (!valDer) return -1;
 
-    if (valIzq < valDer) return sortOrder === "asc" ? 1 : -1;
-    if (valIzq > valDer) return sortOrder === "asc" ? -1 : 1;
-    return 0;
-});
+        if (valIzq < valDer) return sortOrder === "asc" ? 1 : -1;
+        if (valIzq > valDer) return sortOrder === "asc" ? -1 : 1;
+        return 0;
+    });
 
 export default ProductPage;

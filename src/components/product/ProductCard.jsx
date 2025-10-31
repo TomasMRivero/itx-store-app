@@ -2,7 +2,7 @@ import { Box, Card, CardActionArea, CardContent, CardMedia, Skeleton, Typography
 import { bool, shape, string } from "prop-types";
 import { useNavigate } from "react-router-dom";
 
-const ProductCard = ({ 
+const ProductCard = ({
     product,
     isLoading = false
 }) => {
@@ -12,17 +12,17 @@ const ProductCard = ({
         navigate(`/products/${product.id}`)
     }
 
-    return(
-        <Card 
+    return (
+        <Card
             sx={{
                 backgroundColor: "background.paper",
                 borderRadius: 3,
             }}
         >
-            <CardActionArea sx={{padding: 3}} onClick={handleClick}>
-                
+            <CardActionArea sx={{ padding: 3 }} onClick={handleClick}>
+
                 {isLoading ? (
-                    <Skeleton 
+                    <Skeleton
                         height={210}
                         width={228}
                         animation="wave"
@@ -47,7 +47,7 @@ const ProductCard = ({
                             flexDirection: "column",
                         }}
                     />
-                ) }
+                )}
                 <CardContent sx={{ flexGrow: 1, display: "flex", flexDirection: "column", justifyContent: "space-between", padding: 2, "&:last-child": { paddingBottom: 0 } }}>
                     <Box
                         display="flex"

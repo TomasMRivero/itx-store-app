@@ -18,7 +18,7 @@ export const cartApi = createApi({
         getCart: builder.query({
             queryFn: () => {
                 const cached = localStorage.getItem('cartApiCache_counter');
-                return cached ? {data: JSON.parse(cached)} : { data: null }
+                return cached ? { data: JSON.parse(cached) } : { data: null }
             },
             providesTags: ["Cart"],
         }),

@@ -1,0 +1,44 @@
+{
+    "common": {
+
+    },
+    "product": {
+        "attributes": {
+            "brand": "Marca",
+            "model": "Modelo",
+            "price": "Precio",
+            "networkTechnology": "Tecnología de red",
+            "networkSpeed": "Velocidad de red",
+            "gprs": "Tiene GPRS",
+            "edge": "Tiene EDGE",
+            "announced": "Fecha de lanzamiento",
+            "status": "Estado",
+            "dimentions": "Dimensiones",
+            "weight": "Peso",
+            "sim": "Soporte tarjeta SIM",
+            "displayType": "Pantalla",
+            "displayResolution": "Resolución",
+            "displaySize": "Tamaño de pantalla",
+            "os": "Sistema operativo",
+            "cpu": "CPU",
+            "chipset": "Chipset",
+            "gpu": "GPU",
+            "externalMemory": "Memoria externa",
+            "internalMemory": "Memoria interna",
+            "ram": "RAM",
+            "primaryCamera": "Cámara principal",
+            "secondaryCmera": "Cámara secundaria",
+            "speaker": "Tiene altavoces",
+            "audioJack": "Tiene salida de audio",
+            "wlan": "Tiene WLAN",
+            "bluetooth": "Bluetooth",
+            "gps": "GPS",
+            "nfc": "NFC",
+            "radio": "Radio",
+            "usb": "Conexión USB",
+            "sensors": "Sensores",
+            "battery": "Batería",
+            "colors": "Colores disponibles"
+        }
+    }
+}

@@ -25,7 +25,7 @@ const ProductPage = ({}) => {
         return result
     }, [search, productList, sortBy, sortOrder]);
     return(
-        <Box>
+        <Box sx={{ p: 4 }}>
             <Typography variant="h4" mb={3}>
                 Productos
             </Typography>

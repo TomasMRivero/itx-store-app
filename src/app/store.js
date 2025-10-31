@@ -4,13 +4,13 @@ import { cartApi } from "../features/cart/cartApi";
 
 export const store = configureStore({
     reducer: {
-      [productApi.reducerPath]: productApi.reducer,
-      [cartApi.reducerPath]: cartApi.reducer,
+        [productApi.reducerPath]: productApi.reducer,
+        [cartApi.reducerPath]: cartApi.reducer,
     },
     middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware()
-        .concat(
-            productApi.middleware,
-            cartApi.middleware
-        ),
-  });
+        getDefaultMiddleware()
+            .concat(
+                productApi.middleware,
+                cartApi.middleware
+            ),
+});

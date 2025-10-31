@@ -8,29 +8,29 @@ import { createTheme, CssBaseline, ThemeProvider } from '@mui/material'
 import { BrowserRouter } from 'react-router-dom'
 
 const theme = createTheme({
-  palette: {
-    mode: "light",
-    primary: { main: "#F4BF96"},
-    secondary: { main: "#CE5A67"},
-    background: {
-      default: "#f5f5f5",
-      paper: "#ffffff", 
-    }
-  },
-  typography: {
-    fontFamily: "Roboto, sans-serif"
-  }
+	palette: {
+		mode: "light",
+		primary: { main: "#F4BF96" },
+		secondary: { main: "#CE5A67" },
+		background: {
+			default: "#f5f5f5",
+			paper: "#ffffff",
+		}
+	},
+	typography: {
+		fontFamily: "Roboto, sans-serif"
+	}
 })
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <Provider store={store}>
-      <ThemeProvider theme={theme}>
-        <BrowserRouter>
-          <CssBaseline />
-          <App />
-        </BrowserRouter>
-      </ThemeProvider>
-    </Provider>
-  </StrictMode>
+	<StrictMode>
+		<Provider store={store}>
+			<ThemeProvider theme={theme}>
+				<BrowserRouter>
+					<CssBaseline />
+					<App />
+				</BrowserRouter>
+			</ThemeProvider>
+		</Provider>
+	</StrictMode>
 )

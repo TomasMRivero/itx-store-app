@@ -6,7 +6,12 @@
         "asc": "Ascendente",
         "desc": "Descendente",
         "search": "Buscar",
-        "title": "ITX-SHOP"
+        "title": "ITX-SHOP",
+        "pages": {
+            "home": "Home",
+            "products": "Productos",
+            "productDetails": "Detalle del producto"
+        }
     },
     "product": {
         "sections": {

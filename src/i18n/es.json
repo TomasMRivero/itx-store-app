@@ -1,8 +1,13 @@
 {
     "common": {
-
+        "seeMore": "Ver más",
+        "seeLess": "Ver menos"
     },
     "product": {
+        "sections": {
+            "catalog": "Catálogo de productos",
+            "description": "Descripción del producto:"
+        },
         "attributes": {
             "brand": "Marca",
             "model": "Modelo",

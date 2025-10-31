@@ -24,10 +24,10 @@ const ProductDetailPage = () => {
                 </Grid>
 
                 <Grid size={{ xs: 12, md: 5 }}>
-                    <Box sx={{ width: '100%', boxSizing: 'border-box', m:2, mt:0}}>
+                    <Box sx={{ width: '100%', boxSizing: 'border-box', mb:3}}>
                         <ProductDetail product={product} />
                     </Box>
-                    <Box sx={{ width: '100%', boxSizing: 'border-box', m:2}}>
+                    <Box sx={{ width: '100%', boxSizing: 'border-box'}}>
                         <ProductActions options={product.options} onAddToCart={(values) => { console.log(values) }} />
                     </Box>
                 </Grid>

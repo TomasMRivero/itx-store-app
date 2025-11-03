@@ -24,10 +24,6 @@ const theme = createTheme({
 	}
 })
 
-if (!globalThis.importMeta) {
-  globalThis.importMeta = { env: import.meta.env };
-}
-
 createRoot(document.getElementById('root')).render(
 	<StrictMode>
 		<Provider store={store}>

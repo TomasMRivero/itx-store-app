@@ -3,13 +3,15 @@ import 'whatwg-fetch';
 import { TextEncoder, TextDecoder } from 'util';
 import { TransformStream, ReadableStream, WritableStream } from 'stream/web';
 
+process.env.VITE_ITX_BASE_URL = process.env.VITE_ITX_BASE_URL ?? 'http://localhost:3000';
+process.env.VITE_CACHE_EXPIRES_AFTER_SECONDS = process.env.VITE_CACHE_EXPIRES_AFTER_SECONDS ?? '3600';
 
 class MockBroadcastChannel {
-  constructor() {}
-  postMessage() {}
-  addEventListener() {}
-  removeEventListener() {}
-  close() {}
+	constructor() { }
+	postMessage() { }
+	addEventListener() { }
+	removeEventListener() { }
+	close() { }
 }
 
 global.BroadcastChannel = MockBroadcastChannel;
@@ -19,17 +21,11 @@ global.TransformStream = TransformStream;
 global.ReadableStream = ReadableStream;
 global.WritableStream = WritableStream;
 
-globalThis.importMeta = {
-  env: {
-    VITE_ITX_BASE_URL: 'http://localhost:3000',
-    VITE_CACHE_EXPIRES_AFTER_SECONDS: '3600'
-  }
-};
 
 const storage = {};
 globalThis.localStorage = {
-  getItem: key => storage[key] ?? null,
-  setItem: (key, value) => { storage[key] = value; },
-  removeItem: key => { delete storage[key]; },
-  clear: () => Object.keys(storage).forEach(k => delete storage[k])
+	getItem: key => storage[key] ?? null,
+	setItem: (key, value) => { storage[key] = value; },
+	removeItem: key => { delete storage[key]; },
+	clear: () => Object.keys(storage).forEach(k => delete storage[k])
 };

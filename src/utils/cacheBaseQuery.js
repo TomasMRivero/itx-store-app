@@ -1,8 +1,7 @@
 import { fetchBaseQuery } from "@reduxjs/toolkit/query";
 
-const env = (typeof globalThis !== 'undefined' && globalThis.importMeta?.env) || {};
-const EXPIRES_AFTER = (Number(env.VITE_CACHE_EXPIRES_AFTER_SECONDS) || 3600) * 1000;
-const BASE_URL = env.VITE_ITX_BASE_URL;
+const EXPIRES_AFTER = (Number(import.meta.env.VITE_CACHE_EXPIRES_AFTER_SECONDS) || 3600) * 1000;
+const BASE_URL = import.meta.env.VITE_ITX_BASE_URL;
 
 export const cacheBaseQuery =
     (baseUrl = BASE_URL) => async ({ url, method = 'GET', body, params }, api, extraOptions) => {

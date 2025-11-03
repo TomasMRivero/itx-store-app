@@ -4,11 +4,11 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import labels from '../../i18n/es.json';
 import { useGetCartQuery } from "../../features/cart/cartApi";
 import AppBreadcrumbs from "./AppBreadcrumbs";
+import { useSelector } from "react-redux";
 
-const Header = ({
-    children
-}) => {
-    const { data } = useGetCartQuery();
+const Header = () => {
+    const { count } = useSelector((state) => state.cart)
+
     return (
         <AppBar position="fixed">
             <Toolbar>
@@ -17,7 +17,7 @@ const Header = ({
                 </Typography>
 
                 <IconButton color="inherit">
-                    <Badge badgeContent={data?.count | null} color="secondary">
+                    <Badge badgeContent={count || null} color="secondary">
                         <ShoppingCartIcon />
                     </Badge>
                 </IconButton>

@@ -1,6 +1,5 @@
-import { string } from "prop-types";
 import { useGetProductByIdQuery } from "../../features/product/productApi";
-import { Box, CircularProgress, Container, Grid, Paper, Typography } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import { useParams } from "react-router-dom";
 import ProductDetail from "../product/ProductDetail";
 import ProductActions from "../product/ProductActions";
@@ -9,9 +8,7 @@ import { useAddToCartMutation } from "../../features/cart/cartApi";
 import labels from '../../i18n/es.json';
 import ErrorScreen from "../layout/ErrorScreen";
 import SectionSpinner from "../common/SectionSpinner";
-import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { setToast, TOAST_SUCCESS } from "../../features/toast/toastSlice";
 
 const ProductDetailPage = () => {
     const dispatch = useDispatch()
@@ -27,11 +24,6 @@ const ProductDetailPage = () => {
             storageCode,
         });
     };
-    
-    useEffect(() => {
-        if(isAddToCartError) dispatch(setToast({ message: labels.cart.addToCart.error }));
-        if(isAddToCartSuccess) dispatch(setToast({ message: labels.cart.addToCart.success, type: TOAST_SUCCESS}));
-    }, [isError, isAddToCartSuccess]);
 
     if(isError) return <ErrorScreen message={labels.error.pages.fetchProduct} onRetry={refetch}/>
     return (

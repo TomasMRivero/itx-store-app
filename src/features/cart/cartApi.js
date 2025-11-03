@@ -20,7 +20,6 @@ export const cartApi = createApi({
             async onQueryStarted(arg, {dispatch, queryFulfilled}) {
                 try{
                     const {data} = await queryFulfilled;
-                    console.log(data)
                     dispatch(setCart(data.count));
                     dispatch(setToast({ message: labels.cart.addToCart.success, type: TOAST_SUCCESS}));
                 } catch {

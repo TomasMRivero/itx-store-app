@@ -36,3 +36,10 @@ export const store = configureStore({
 });
 
 export const persistor = persistStore(store);
+
+export const setupStore = preloadedState => {
+  return configureStore({
+    reducer: rootReducer,
+    preloadedState
+  })
+}

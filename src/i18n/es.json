@@ -79,14 +79,17 @@
         },
         "loadingDetail": "Cargando detalles del producto..."
     },
+    "cart": {
+        "addToCart": {
+            "error": "No se pudo agregar el producto al carrito",
+            "success": "Producto agregado al carrito"
+        }
+    },
     "error": {
         "pages": {
             "title": "¡Ups! Algo salió mal.",
             "fetchProductList": "No pudimos obtener los productos",
             "fetchProduct": "No pudimos obtener el detalle del producto"
-        },
-        "toast": {
-            "addToCart": "Hubo un problema al añadir tu producto al carrito."
         }
     }
 }

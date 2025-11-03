@@ -9,23 +9,29 @@ import { useAddToCartMutation } from "../../features/cart/cartApi";
 import labels from '../../i18n/es.json';
 import ErrorScreen from "../layout/ErrorScreen";
 import SectionSpinner from "../common/SectionSpinner";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { setToast, TOAST_SUCCESS } from "../../features/toast/toastSlice";
 
 const ProductDetailPage = () => {
+    const dispatch = useDispatch()
     const { id } = useParams();
     const { data: product, isLoading: isProductFetching, isError, refetch } = useGetProductByIdQuery(id);
-    const [addToCart, { isLoading: isAddToCartLoading }] = useAddToCartMutation();
+    const [addToCart, { isLoading: isAddToCartLoading,  isError: isAddToCartError, isSuccess: isAddToCartSuccess }] = useAddToCartMutation();
+    
     const handleAddToCart = async (values) => {
         const { colors: colorCode, storages: storageCode } = values;
-        try {
-            await addToCart({
-                id,
-                colorCode,
-                storageCode,
-            }).unwrap()
-        } catch (err) {
-            console.log(err)
-        }
-    }
+        await addToCart({
+            id,
+            colorCode,
+            storageCode,
+        });
+    };
+    
+    useEffect(() => {
+        if(isAddToCartError) dispatch(setToast({ message: labels.cart.addToCart.error }));
+        if(isAddToCartSuccess) dispatch(setToast({ message: labels.cart.addToCart.success, type: TOAST_SUCCESS}));
+    }, [isError, isAddToCartSuccess]);
 
     if(isError) return <ErrorScreen message={labels.error.pages.fetchProduct} onRetry={refetch}/>
     return (

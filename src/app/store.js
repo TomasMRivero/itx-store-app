@@ -3,9 +3,9 @@ import { productApi } from "../features/product/productApi";
 import { cartApi } from "../features/cart/cartApi";
 import { toastSlice } from "../features/toast/toastSlice";
 import { cartSlice } from "../features/cart/cartSlice";
-import storage from "redux-persist/es/storage";
-import persistReducer from "redux-persist/es/persistReducer";
-import persistStore from "redux-persist/es/persistStore";
+import storage from 'redux-persist/lib/storage';
+import persistReducer from "redux-persist/lib/persistReducer";
+import persistStore from "redux-persist/lib/persistStore";
 
 const persistConfig = {
     key: 'root',
@@ -26,20 +26,24 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 export const store = configureStore({
     reducer: persistedReducer,
     middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware({
-            serializableCheck: false,
-        })
-        .concat(
-            productApi.middleware,
-            cartApi.middleware
-        ),
+        getDefaultMiddleware({ serializableCheck: false, })
+            .concat(
+                productApi.middleware,
+                cartApi.middleware
+            ),
 });
 
 export const persistor = persistStore(store);
 
 export const setupStore = preloadedState => {
-  return configureStore({
-    reducer: rootReducer,
-    preloadedState
-  })
+    return configureStore({
+        reducer: rootReducer,
+        middleware: (getDefaultMiddleware) =>
+            getDefaultMiddleware({ serializableCheck: false, })
+                .concat(
+                    productApi.middleware,
+                    cartApi.middleware
+                ),
+        preloadedState
+    })
 }

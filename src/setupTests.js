@@ -1,5 +1,23 @@
 import '@testing-library/jest-dom';
 import 'whatwg-fetch';
+import { TextEncoder, TextDecoder } from 'util';
+import { TransformStream, ReadableStream, WritableStream } from 'stream/web';
+
+
+class MockBroadcastChannel {
+  constructor() {}
+  postMessage() {}
+  addEventListener() {}
+  removeEventListener() {}
+  close() {}
+}
+
+global.BroadcastChannel = MockBroadcastChannel;
+global.TextEncoder = TextEncoder;
+global.TextDecoder = TextDecoder;
+global.TransformStream = TransformStream;
+global.ReadableStream = ReadableStream;
+global.WritableStream = WritableStream;
 
 globalThis.importMeta = {
   env: {

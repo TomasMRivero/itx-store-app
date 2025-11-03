@@ -3,7 +3,8 @@ import { setCart } from "./cartSlice";
 import labels from '../../i18n/es.json';
 import { setToast, TOAST_SUCCESS } from "../toast/toastSlice";
 
-const BASE_URL = import.meta.env.VITE_ITX_BASE_URL;
+const env = (typeof globalThis !== 'undefined' && globalThis.importMeta?.env) || {};
+const BASE_URL = env.VITE_ITX_BASE_URL;
 
 export const cartApi = createApi({
     reducerPath: 'cartApi',

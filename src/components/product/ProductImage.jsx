@@ -17,8 +17,30 @@ const ProductImage = ({ imgUrl = null, brand = null, model = null, isLoading = t
             }}
         >
             {isLoading ? (
-                <Skeleton variant="rectangular" sx={{ height: 530, width: 'auto' }}>
-                </Skeleton>
+                <Box
+                    sx={{
+                        width: '100%',
+                        maxWidth: '100%',
+                        height: 'auto',
+                        objectFit: 'contain',
+                        display: 'block',
+                        borderRadius: 2,
+                        boxShadow: 3,
+                        p: 4,
+                        backgroundColor: "background.paper",
+                    }}
+                >
+                    <Skeleton variant="rectangular"
+                        sx = {{
+                            width: '100%',
+                            maxWidth: '100%',
+                            height: 530,
+                            objectFit: 'contain',
+                            display: 'block',
+                            boxShadow: 3,
+                        }}>
+                    </Skeleton>
+                </Box>
             ) : (
                 <Box
                     component="img"

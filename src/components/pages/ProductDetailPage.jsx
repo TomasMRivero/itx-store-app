@@ -6,12 +6,14 @@ import ProductDetail from "../product/ProductDetail";
 import ProductActions from "../product/ProductActions";
 import ProductImage from "../product/ProductImage";
 import { useAddToCartMutation } from "../../features/cart/cartApi";
+import labels from '../../i18n/es.json';
+import ErrorScreen from "../layout/ErrorScreen";
+import SectionSpinner from "../common/SectionSpinner";
 
 const ProductDetailPage = () => {
     const { id } = useParams();
     const { data: product, isLoading: isProductFetching, isError } = useGetProductByIdQuery(id);
     const [addToCart, { isLoading: isAddToCartLoading }] = useAddToCartMutation();
-
     const handleAddToCart = async (values) => {
         const { colors: colorCode, storages: storageCode } = values;
         try {
@@ -25,7 +27,7 @@ const ProductDetailPage = () => {
         }
     }
 
-    if (isProductFetching) return <>Cargando</>
+    if(isError) return <ErrorScreen message={labels.error.pages.fetchProduct} onRetry={() => {console.log("hola")}}/>
     return (
         <Box sx={{ width: '100%', boxSizing: 'border-box', p: 4 }}>
             <Grid
@@ -41,10 +43,40 @@ const ProductDetailPage = () => {
 
                 <Grid size={{ xs: 12, md: 5 }}>
                     <Box sx={{ width: '100%', boxSizing: 'border-box', mb: 3 }}>
-                        <ProductDetail product={product} />
+                        {isProductFetching
+                            ? <Box
+                                sx={{
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    gap: 1,
+                                    borderRadius: 2,
+                                    boxShadow: 3,
+                                    p: 3,
+                                    backgroundColor: "background.paper",
+                                }}
+                                >
+                                    <SectionSpinner message={labels.product.loadingDetail} />
+                                </Box>
+                            : <ProductDetail product={product} />
+                        }
                     </Box>
                     <Box sx={{ width: '100%', boxSizing: 'border-box' }}>
-                        <ProductActions options={product.options} onAddToCart={handleAddToCart} cartLoading={isAddToCartLoading} />
+                        {isProductFetching
+                            ? <Box
+                                sx={{
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    gap: 1,
+                                    borderRadius: 2,
+                                    boxShadow: 3,
+                                    p: 3,
+                                    backgroundColor: "background.paper",
+                                }}
+                                >
+                                    <SectionSpinner noMessage />
+                                </Box>
+                            : <ProductActions options={product.options} onAddToCart={handleAddToCart} cartLoading={isAddToCartLoading} />
+                        }
                     </Box>
                 </Grid>
             </Grid>

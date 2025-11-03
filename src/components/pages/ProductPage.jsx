@@ -4,6 +4,7 @@ import ProductGrid from "../product/ProductGrid";
 import { useMemo, useState } from "react";
 import ProductFilterBar from "../product/ProductFilterBar";
 import labels from '../../i18n/es.json';
+import ErrorScreen from "../layout/ErrorScreen";
 
 const ProductPage = ({ }) => {
     const { data: productList = [], isLoading, isError } = useGetProductListQuery();
@@ -25,6 +26,7 @@ const ProductPage = ({ }) => {
 
         return result
     }, [search, productList, sortBy, sortOrder]);
+    if(isError) return <ErrorScreen message={labels.error.pages.fetchProductList} onRetry={() => {console.log("hola")}}/>
     return (
         <Box sx={{ p: 4 }}>
             <Typography variant="h4" mb={3}>
@@ -38,7 +40,7 @@ const ProductPage = ({ }) => {
                 setSortBy={setSortBy}
                 setSortOrder={setSortOrder}
             />
-            {!isError && <ProductGrid productList={filteredProducts} isLoading={isLoading} />}
+            <ProductGrid productList={filteredProducts} isLoading={isLoading} />
         </Box>
     )
 }

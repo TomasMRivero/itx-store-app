@@ -7,7 +7,7 @@ import labels from '../../i18n/es.json';
 import ErrorScreen from "../layout/ErrorScreen";
 
 const ProductPage = ({ }) => {
-    const { data: productList = [], isLoading, isError } = useGetProductListQuery();
+    const { data: productList = [], isLoading, isError, refetch } = useGetProductListQuery();
 
     const [search, setSearch] = useState("");
     const [sortBy, setSortBy] = useState("");
@@ -26,7 +26,7 @@ const ProductPage = ({ }) => {
 
         return result
     }, [search, productList, sortBy, sortOrder]);
-    if(isError) return <ErrorScreen message={labels.error.pages.fetchProductList} onRetry={() => {console.log("hola")}}/>
+    if(isError) return <ErrorScreen message={labels.error.pages.fetchProductList} onRetry={refetch}/>
     return (
         <Box sx={{ p: 4 }}>
             <Typography variant="h4" mb={3}>

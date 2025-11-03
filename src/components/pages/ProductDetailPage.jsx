@@ -12,7 +12,7 @@ import SectionSpinner from "../common/SectionSpinner";
 
 const ProductDetailPage = () => {
     const { id } = useParams();
-    const { data: product, isLoading: isProductFetching, isError } = useGetProductByIdQuery(id);
+    const { data: product, isLoading: isProductFetching, isError, refetch } = useGetProductByIdQuery(id);
     const [addToCart, { isLoading: isAddToCartLoading }] = useAddToCartMutation();
     const handleAddToCart = async (values) => {
         const { colors: colorCode, storages: storageCode } = values;
@@ -27,7 +27,7 @@ const ProductDetailPage = () => {
         }
     }
 
-    if(isError) return <ErrorScreen message={labels.error.pages.fetchProduct} onRetry={() => {console.log("hola")}}/>
+    if(isError) return <ErrorScreen message={labels.error.pages.fetchProduct} onRetry={refetch}/>
     return (
         <Box sx={{ width: '100%', boxSizing: 'border-box', p: 4 }}>
             <Grid

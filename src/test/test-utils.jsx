@@ -1,9 +1,8 @@
-import { ThemeProvider } from '@emotion/react'
-import { default as createTheme, CssBaseline } from '@mui/material'
-import { render } from '@testing-library/react'
-import { Provider } from 'react-redux'
-import { MemoryRouter } from 'react-router-dom'
-import { setupStore } from '../app/store'
+import { CssBaseline, ThemeProvider, createTheme } from '@mui/material';
+import { render } from '@testing-library/react';
+import { Provider } from 'react-redux';
+import { MemoryRouter } from 'react-router-dom';
+import { setupStore } from '../app/store';
 
 export const renderWithProviders = (
 	ui, extendedRenderOptions = {}

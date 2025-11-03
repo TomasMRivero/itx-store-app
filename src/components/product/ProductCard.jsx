@@ -19,7 +19,7 @@ const ProductCard = ({
                 borderRadius: 3,
             }}
         >
-            <CardActionArea sx={{ padding: 3 }} onClick={handleClick}>
+            <CardActionArea sx={{ padding: 3 }} onClick={handleClick} data-testid="card-action-area">
 
                 {isLoading ? (
                     <Skeleton
@@ -33,6 +33,7 @@ const ProductCard = ({
                             flexDirection: "column",
                             mx: "auto"
                         }}
+                        data-testid="card-skeleton"
                     />
                 ) : (
                     <CardMedia

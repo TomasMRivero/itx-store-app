@@ -7,11 +7,11 @@ export const TOAST_SUCCESS = 'success';
 
 const initialState = {
     message: null,
-    type: error,
+    type: TOAST_ERROR,
     open: false,
 };
 
-const toastSlice = createSlice({
+export const toastSlice = createSlice({
     name: 'toast',
     initialState,
     reducers: {

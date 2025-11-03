@@ -4,9 +4,11 @@ import MainLayout from './components/layout/MainLayout'
 import ProductPage from './components/pages/ProductPage'
 import ProductDetailPage from './components/pages/ProductDetailPage'
 import labels from './i18n/es.json';
+import Toast from './components/common/Toast'
 
 function App() {
 	return (
+		<>
 		<Routes>
 			<Route path="/" element={<MainLayout />} >
 				<Route index element={<Navigate to="/products" replace />} breadcrumb={labels.common.pages.home} />
@@ -16,6 +18,8 @@ function App() {
 
 			<Route path="*" element={<h1>404 - Página no encontrada</h1>} />
 		</Routes>
+		<Toast />
+		</>
 	)
 }
 

@@ -7,7 +7,7 @@ export const TOAST_SUCCESS = 'success';
 
 const initialState = {
     message: null,
-    type: TOAST_ERROR,
+    type: null,
     open: false,
 };
 
@@ -23,6 +23,7 @@ export const toastSlice = createSlice({
         },
         clearToast: state => {
             state.message = null;
+            state.type = null,
             state.open = false;
         },
     },

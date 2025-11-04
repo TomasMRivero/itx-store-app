@@ -46,5 +46,16 @@ También se puede previsualizar la build cion el comando
 npm run preview
 ```
 
+### 5- Ejecutar pruebas
 
+Ejecutar en la raiz del proyecto:
+```
+npm test
+```
 
+### 6- Ejecutar linter
+
+Ejecutar en la raiz del proyecto:
+```
+npm run lint
+```

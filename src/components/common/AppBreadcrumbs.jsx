@@ -2,13 +2,14 @@ import { matchPath, Link as RouterLink, useLocation } from "react-router-dom";
 import labels from '../../i18n/es.json';
 import { Breadcrumbs, Link as MUILink, Typography } from "@mui/material";
 
-export const breadcrumbNameMap = {
-    "/": labels.common.pages.home,
-    "/products": labels.common.pages.products,
-    "/products/:id": labels.common.pages.productDetails,
-};
 
 const AppBreadcrumbs = () => {
+    const breadcrumbNameMap = {
+        "/": labels.common.pages.home,
+        "/products": labels.common.pages.products,
+        "/products/:id": labels.common.pages.productDetails,
+    };
+
     const location = useLocation();
     const pathnames = location.pathname.split("/").filter((x) => x);
     const crumbs = pathnames.map((_, index) => {
@@ -49,7 +50,8 @@ const AppBreadcrumbs = () => {
                         >
                             {crumb.label}
                         </MUILink>
-                    )})
+                    )
+                })
             }
         </Breadcrumbs>
     );

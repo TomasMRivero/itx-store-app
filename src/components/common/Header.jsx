@@ -2,8 +2,6 @@ import { AppBar, Badge, IconButton, Toolbar, Typography } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import labels from '../../i18n/es.json';
-import { useGetCartQuery } from "../../features/cart/cartApi";
-import AppBreadcrumbs from "./AppBreadcrumbs";
 import { useSelector } from "react-redux";
 
 const Header = () => {

@@ -3,9 +3,7 @@ import Header from "../common/Header";
 import { Outlet } from "react-router-dom";
 import AppBreadcrumbs from "../common/AppBreadcrumbs";
 
-const MainLayout = ({
-    children
-}) => {
+const MainLayout = () => {
     return (
         <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
             <Header />

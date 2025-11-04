@@ -4,7 +4,7 @@ import { Box, Button, Typography } from "@mui/material";
 import { useLayoutEffect, useRef, useState } from "react";
 
 const ProductDetail = ({ product }) => {
-    const { id, options, imgUrl, ...attrs } = product
+    const { _id, _options, _imgUrl, ...attrs } = product
 
     const [expanded, setExpanded] = useState(false);
     const [overflown, setOverflown] = useState(false);

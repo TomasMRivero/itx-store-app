@@ -6,7 +6,7 @@ import ProductFilterBar from "../product/ProductFilterBar";
 import labels from '../../i18n/es.json';
 import ErrorScreen from "../layout/ErrorScreen";
 
-const ProductPage = ({ }) => {
+const ProductPage = () => {
     const { data: productList = [], isLoading, isError, refetch } = useGetProductListQuery();
 
     const [search, setSearch] = useState("");

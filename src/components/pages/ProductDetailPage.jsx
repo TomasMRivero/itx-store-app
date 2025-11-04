@@ -8,13 +8,11 @@ import { useAddToCartMutation } from "../../features/cart/cartApi";
 import labels from '../../i18n/es.json';
 import ErrorScreen from "../layout/ErrorScreen";
 import SectionSpinner from "../common/SectionSpinner";
-import { useDispatch } from "react-redux";
 
 const ProductDetailPage = () => {
-    const dispatch = useDispatch()
     const { id } = useParams();
     const { data: product, isLoading: isProductFetching, isError, refetch } = useGetProductByIdQuery(id);
-    const [addToCart, { isLoading: isAddToCartLoading,  isError: isAddToCartError, isSuccess: isAddToCartSuccess }] = useAddToCartMutation();
+    const [addToCart, { isLoading: isAddToCartLoading }] = useAddToCartMutation();
     
     const handleAddToCart = async (values) => {
         const { colors: colorCode, storages: storageCode } = values;
